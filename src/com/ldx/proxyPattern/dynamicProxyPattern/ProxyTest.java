@@ -14,8 +14,12 @@ public class ProxyTest {
 
         System.out.println("----------------------");
 
-        System.out.println("使用代理类");
-        Person proxy = (Person) new JDKDynamicProxy(new Bob()).getTarget();
-        proxy.doSomething();
+//        System.out.println("使用代理类");
+//        Person proxy = (Person) new JDKDynamicProxy(new Bob()).getTarget();
+//        proxy.doSomething();
+
+        CGLibProxy cgLibProxy = new CGLibProxy();
+        Bob bob = (Bob) cgLibProxy.getCglibProxy(new Bob());
+        bob.doSomething();
     }
 }
